@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-
+from django.conf import settings 
+from Persona.views import informacion_depuracion
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^persona/',include('Persona.urls'))
 ]
+if settings.DEBUG:
+    urlpatterns+= [
+        url(r'^depuracion/',informacion_depuracion)
+        ]
